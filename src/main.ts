@@ -31,7 +31,6 @@ function jump() {
     isJumping = true;
     dino?.classList.add("jump");
     setTimeout(RemoveJump, 500);
-    //requestAnimationFrame(RemoveJump);
   } else {
     StartGame();
   }
