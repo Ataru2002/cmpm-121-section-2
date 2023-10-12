@@ -21,7 +21,6 @@ function Main() {
   if (gameOver == false) {
     score = score + 1;
     SetText("Score: " + score);
-
     CheckGameOver();
   }
   requestAnimationFrame(Main);
@@ -66,8 +65,8 @@ function CheckGameOver() {
       window.getComputedStyle(bird).getPropertyValue("left")
     );
 
-    //detect cactus collision
-    if (dinoTop >= 150 && Math.abs(cactusleft) < 7) {
+    //detect collision
+    if ((dinoTop >= 150 && Math.abs(cactusleft) < 7) || (dinoTop <= 55 && Math.abs(birdleft) < 11)) {
       //end game
       console.log("player died!");
       SetText("Final Score: " + score + "! Click To Play Again!");
@@ -76,21 +75,7 @@ function CheckGameOver() {
       //reset player
       RemoveJump();
 
-      //reset cactus
-      RemoveObstacles();
-    }
-
-    //detect bird collision
-    if (dinoTop <= 55 && Math.abs(birdleft) < 11) {
-      //end game
-      console.log("player died!");
-      SetText("Final Score: " + score + "! Click To Play Again!");
-      gameOver = true;
-
-      //reset player
-      RemoveJump();
-
-      //reset cactus
+      //reset stuff
       RemoveObstacles();
     }
   }
